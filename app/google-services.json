@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1024332942687",
+    "firebase_url": "https://sarcar-40b52.firebaseio.com",
+    "project_id": "sarcar-40b52",
+    "storage_bucket": "sarcar-40b52.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1024332942687:android:c365669c8aa916e9",
+        "android_client_info": {
+          "package_name": "sodevan.sarcar2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1024332942687-nmbftetpf5qvn5j0i57c5jj208vaqqji.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASezjvwQlGSCKTfCrndrDZYUAUm0HX57E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

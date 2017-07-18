@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="sodevan.sarcar2.Login"
+    android:background="@color/colorPrimary"
+    android:padding="20dp"
+    >
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="सरCar"
+        android:textColor="@color/colorAccent"
+        android:textSize="30sp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/logotext2"
+        android:layout_marginTop="30dp"
+
+        />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#4FC24F"
+        android:padding="10dp"
+        android:layout_below="@id/logotext2"
+        android:layout_marginTop="30dp"
+        android:hint="Vehicle No"
+        android:id="@+id/vehicleno"
+        android:textColor="@color/colorPrimaryDark"
+
+
+        />
+
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#4FC24F"
+        android:padding="10dp"
+        android:layout_below="@id/vehicleno"
+        android:layout_marginTop="30dp"
+        android:hint="Mobile No"
+        android:id="@+id/mobileno"
+        android:textColor="@color/colorPrimaryDark"
+
+
+        />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_below="@+id/mobileno"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button1"
+        android:textColor="#fff"
+        android:id="@+id/submitbutton"
+
+        />
+
+
+</RelativeLayout>

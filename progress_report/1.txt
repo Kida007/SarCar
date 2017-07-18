@@ -1,0 +1,8 @@
+#What All Have We Done
+
+* We have implemented map on our android application
+* We have written an algorithm which can predict whether collision is possible or not
+* We have found out exact location of user using Google Fused Location Provider API.
+* We have used Road API to find current road and nearby roads
+* We just have to populate our database and use them with our algorithm to show it's practicality.
+

@@ -1,0 +1,7 @@
+Updates for 10 AM
+
+Our app is ready. Features:
+1) We have successfully tested our algorithm and location, which is almost accurate because of the fused location API. We are planning to go on roads to test the algorithm.
+2) We have created alerts for ambulance, that is whenever in traffic an ambulance is stuck, a broadcast will be sent to all nearby vehichles.
+3) We have seggregated targetting for broadcast efficiently so that only those vehichles, who need the broadcast,receivethe broadcast.
+4) We have implemented E-Challan, whenever someone drives faster than the speed limit, an echallan will be cut automatically after 5 violations.

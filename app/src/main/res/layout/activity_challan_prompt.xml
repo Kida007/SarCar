@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_challan_prompt"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#f2f2f2"
+    android:padding="20dp"
+    tools:context="sodevan.sarcar2.ChallanPrompt">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="E-Challan"
+        android:id="@+id/challanhead"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:textColor="#222"
+        android:layout_marginBottom="20dp"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RC NO : 3847237827372"
+        android:id="@+id/rc"
+        android:layout_below="@id/challanhead"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fineamount"
+        android:text="Fine : ₹600 "
+        android:layout_below="@id/rc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Location"
+        android:text="Location : Azad Hind Fauj Marg"
+        android:layout_below="@id/fineamount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+
+        />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Close"
+        android:layout_below="@id/Location"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/close"
+        />
+
+
+
+</RelativeLayout>

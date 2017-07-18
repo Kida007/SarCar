@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="sodevan.sarcar2.Map">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:id="@+id/appbar"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:layout_centerVertical="true"
+            android:text="0 Km/H"
+            android:textSize="20sp"
+            android:paddingLeft="20dp"
+            android:id="@+id/speedtv"
+
+            />
+
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#40ffffff"
+            android:layout_toRightOf="@id/speedtv"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/vl"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="-"
+            android:textColor="#fff"
+            android:layout_toRightOf="@id/vl"
+            android:layout_marginLeft="10dp"
+            android:textSize="20sp"
+            android:id="@+id/loc_road"
+            />
+
+    </RelativeLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/appbar">
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/map2"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            xmlns:tools="http://schemas.android.com/tools"
+            tools:context="sodevan.sarcar.Map"/>
+
+
+    </FrameLayout>
+
+
+
+
+</RelativeLayout>
