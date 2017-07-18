@@ -29,6 +29,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -91,17 +92,21 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
                 Double latitude = location.getLatitude() ;
                 Double longitude = location.getLongitude() ;
+                float Bearing = location.getBearing() ;
 
-                if (latitude!=null || longitude!=null){
+                if (latitude!=null || longitude!=null ){
                     if(!road.equals("")){
-
                         loc_road.setText(road);
-                     prev_road=road;}
-                    road=fb.getRoad(latitude,longitude);
-                    myRef.child(prev_road).child(uname).removeValue();
+                        prev_road=road;
+                    }
+                        road=fb.getRoad(latitude,longitude);
+                        myRef.child(prev_road).child(uname).removeValue();
 
-                    CarObject co = new CarObject(location.getLatitude()+"", location.getLongitude()+"" , prev_lat+"" , prev_long+"") ;
 
+                    HashMap<Integer , LatLng> hp = getnextlatlong(new LatLng(location.getLatitude() , location.getLongitude()) , speed , Bearing) ;
+                    Log.i("nextLatLong" , hp+" ") ;
+
+                    CarObject co = new CarObject(location.getLatitude()+"", location.getLongitude()+"" , prev_lat+"" , prev_long+"" , Bearing+"" ) ;
                     myRef.child(road).child(uname).setValue(co) ;
                     prev_lat=latitude;
                     prev_long=longitude;
@@ -111,6 +116,9 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
             }
         });
+
+
+
         TimerTask t=new TimerTask() {
             @Override
             public void run() {
@@ -195,12 +203,53 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         }
     }
 
+
+    public HashMap<Integer , LatLng> getnextlatlong( LatLng ln , Float speed , float Bearing )  {
+
+        HashMap< Integer , LatLng> arll = new HashMap<>() ;
+
+        for( int i=1 ; i<=100 ; i++)   {
+
+            double distance_travelled = speed * 0.15 *i ;
+            double bearing_angle = Math.toRadians(Bearing) ;
+            double lat1 = Math.toRadians(ln.latitude) ;
+            double lon1 = Math.toRadians(ln.longitude) ;
+
+            double lat2 = Math.asin( Math.sin(lat1)*Math.cos(distance_travelled) + Math.cos(lat1)*Math.sin(distance_travelled)*Math.cos(bearing_angle) );
+            double a = Math.atan2(Math.sin(bearing_angle)*Math.sin(distance_travelled)*Math.cos(lat1), Math.cos(distance_travelled)-Math.sin(lat1)*Math.sin(lat2));
+            double lon2 = lon1 + a;
+            lon2 = (lon2+ 3*Math.PI) % (2*Math.PI) - Math.PI;
+
+            int time  = getCurrentTime()+ i*150 ;
+
+
+
+            //Converting Back  to from Radians Degrees
+
+            lat2 = Math.toDegrees(lat2) ;
+            lon2 = Math.toDegrees(lon2);
+
+            arll.put(time , new LatLng(lat2 , lon2)) ;
+
+        }
+
+        return arll ;
+    }
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
         gmap=googleMap ;
 
     }
+
+
+
+    public int getCurrentTime (){
+
+        int time = (int) (System.currentTimeMillis());
+        return time ;
+    }
+
 
 
 

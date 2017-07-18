@@ -9,16 +9,17 @@ public class CarObject {
     String lon ;
     String prev_lat ;
     String  prev_lon ;
-
+    String  bearing ;
 
     public CarObject() {
     }
 
-    public CarObject(String lat, String lon, String prev_lat, String prev_lon) {
+    public CarObject(String lat, String lon, String prev_lat, String prev_lon, String bearing) {
         this.lat = lat;
         this.lon = lon;
         this.prev_lat = prev_lat;
         this.prev_lon = prev_lon;
+        this.bearing = bearing;
     }
 
 
@@ -52,5 +53,13 @@ public class CarObject {
 
     public void setPrev_lon(String prev_lon) {
         this.prev_lon = prev_lon;
+    }
+
+    public String getBearing() {
+        return bearing;
+    }
+
+    public void setBearing(String bearing) {
+        this.bearing = bearing;
     }
 }
