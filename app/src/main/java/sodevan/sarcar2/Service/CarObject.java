@@ -1,5 +1,8 @@
 package sodevan.sarcar2.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * Created by ravipiyush on 13/04/17.
  */
@@ -10,17 +13,23 @@ public class CarObject {
     String prev_lat ;
     String  prev_lon ;
     String  bearing ;
+    HashMap<String , HashMap<String ,String> > nextlatlon ;
+    ArrayList<String> near_by_segments ;
+
 
     public CarObject() {
     }
 
-    public CarObject(String lat, String lon, String prev_lat, String prev_lon, String bearing) {
+    public CarObject(String lat, String lon, String prev_lat, String prev_lon, String bearing, HashMap<String, HashMap<String, String>> nextlatlon, ArrayList<String> near_by_segments) {
         this.lat = lat;
         this.lon = lon;
         this.prev_lat = prev_lat;
         this.prev_lon = prev_lon;
         this.bearing = bearing;
+        this.nextlatlon = nextlatlon;
+        this.near_by_segments = near_by_segments;
     }
+
 
 
     public String getLat() {
@@ -61,5 +70,21 @@ public class CarObject {
 
     public void setBearing(String bearing) {
         this.bearing = bearing;
+    }
+
+    public HashMap<String, HashMap<String, String>> getNextlatlon() {
+        return nextlatlon;
+    }
+
+    public void setNextlatlon(HashMap<String, HashMap<String, String>> nextlatlon) {
+        this.nextlatlon = nextlatlon;
+    }
+
+    public ArrayList<String> getNear_by_segments() {
+        return near_by_segments;
+    }
+
+    public void setNear_by_segments(ArrayList<String> near_by_segments) {
+        this.near_by_segments = near_by_segments;
     }
 }

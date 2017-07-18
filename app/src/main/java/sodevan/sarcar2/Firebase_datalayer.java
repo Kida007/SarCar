@@ -1,6 +1,14 @@
 package sodevan.sarcar2;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
+
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,12 +28,14 @@ public class Firebase_datalayer {
 //        this.uname=uname;
 //    }
 
-    String res="no road";
+    ArrayList<String> roads ;
 
 
+    public void getRoad(double lat, double lon , final Context c1){
 
-    public String getRoad(double lat,double lon){
 
+        roads = new ArrayList<>() ;
+        roads.add(0 ,"no road");
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://api.geonames.org/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -36,9 +46,19 @@ public class Firebase_datalayer {
         call.enqueue(new Callback<NearbyStreets>() {
             @Override
             public void onResponse(Call<NearbyStreets> call, Response<NearbyStreets> response) {
-                Log.d("TAG",response.body().getStreetSegment().get(0).getName());
-                res= response.body().getStreetSegment().get(0).getName();
+                List<sodevan.sarcar2.Models.StreetSegment> o1 = response.body().getStreetSegment() ;
+                Log.i("jjkk" , o1+"");
 
+                roads = new ArrayList<>() ;
+                for(sodevan.sarcar2.Models.StreetSegment c1  : o1 ) {
+                    roads.add(c1.getName()) ;
+
+                }
+
+                Gson gson = new Gson();
+                String json = gson.toJson(roads);
+                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(c1) ;
+                sp.edit().putString("roads" , json).commit() ;
             }
 
             @Override
@@ -46,7 +66,6 @@ public class Firebase_datalayer {
 
             }
         });
-        return res;
     }
 
 }

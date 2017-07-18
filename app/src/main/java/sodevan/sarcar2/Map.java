@@ -28,7 +28,11 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Timer;
@@ -46,6 +50,8 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
     Firebase_datalayer fb=new Firebase_datalayer();
     Location mLocation ;
     String road="";
+    ArrayList<String> roads  ;
+    ArrayList<String> j ;
     String prev_road="";
     double prev_lat=0,prev_long=0;
 
@@ -66,7 +72,6 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         });
 
         speedtv = (TextView)findViewById(R.id.speedtv) ;
-
         loc_road = (TextView)findViewById(R.id.loc_road) ;
 
 
@@ -99,17 +104,30 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
                         loc_road.setText(road);
                         prev_road=road;
                     }
-                        road=fb.getRoad(latitude,longitude);
-                        myRef.child(prev_road).child(uname).removeValue();
+
+                        fb.getRoad(latitude,longitude ,getApplicationContext());
+                        String rol = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("roads", null) ;
+                        if(rol!=null) {
+                            Gson gson = new Gson();
+                            Type type = new TypeToken<ArrayList<String>>() {}.getType();
+                            roads = gson.fromJson(rol, type);
+                            Log.i("jjkk2" , roads+"") ;
+                            road= roads.get(0) ;
+                            ArrayList<String> j = roads ;
+                            j.remove(0) ;
+                            myRef.child(prev_road).child(uname).removeValue();
 
 
-                    HashMap<Integer , LatLng> hp = getnextlatlong(new LatLng(location.getLatitude() , location.getLongitude()) , speed , Bearing) ;
-                    Log.i("nextLatLong" , hp+" ") ;
+                            HashMap<String , HashMap<String , String>> hp = getnextlatlong(new LatLng(location.getLatitude() , location.getLongitude()) , speed , Bearing) ;
+                            Log.i("nextLatLong" , hp+" ") ;
 
-                    CarObject co = new CarObject(location.getLatitude()+"", location.getLongitude()+"" , prev_lat+"" , prev_long+"" , Bearing+"" ) ;
-                    myRef.child(road).child(uname).setValue(co) ;
-                    prev_lat=latitude;
-                    prev_long=longitude;
+                            CarObject co = new CarObject(location.getLatitude()+"", location.getLongitude()+"" , prev_lat+"" , prev_long+"" , Bearing+"" , hp  , j) ;
+                            myRef.child(road).child(uname).setValue(co) ;
+                            prev_lat=latitude;
+                            prev_long=longitude;
+                        }
+
+
                     updateloc(new LatLng(location.getLatitude() , location.getLongitude()));
                 }
 
@@ -192,21 +210,21 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
         if (flag==0 && gmap!=null) {
             marker = gmap.addMarker(markerop) ;
-            gmap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 19.0f));
+            gmap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
             flag=1 ;
         }
 
         else if (marker!=null){
             animateMarker(marker , loc , false);
-            gmap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 19.0f));
+            gmap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
 
         }
     }
 
+    // Curve Prediction Model Function
+    public HashMap<String , HashMap<String , String>> getnextlatlong( LatLng ln , Float speed , float Bearing )  {
 
-    public HashMap<Integer , LatLng> getnextlatlong( LatLng ln , Float speed , float Bearing )  {
-
-        HashMap< Integer , LatLng> arll = new HashMap<>() ;
+            HashMap< String , HashMap<String , String >> arll = new HashMap<>() ;
 
         for( int i=1 ; i<=100 ; i++)   {
 
@@ -228,8 +246,14 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
             lat2 = Math.toDegrees(lat2) ;
             lon2 = Math.toDegrees(lon2);
+            HashMap<String , String> latlong = new HashMap<>() ;
+            latlong.put("lat" , lat2+"") ;
+            latlong.put("lon" , lon2+"") ;
 
-            arll.put(time , new LatLng(lat2 , lon2)) ;
+
+
+
+            arll.put(time+"" , latlong) ;
 
         }
 
