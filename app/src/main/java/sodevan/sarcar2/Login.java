@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +23,7 @@ public class Login extends AppCompatActivity {
 
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this) ;
         String vi = sp.getString("vehicleno", "no") ;
+        Log.i("Carno" , vi);
         if (!vi.equals("no")){
 
             Intent changeintent = new Intent(this , Map.class) ;

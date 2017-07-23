@@ -88,7 +88,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
                 //Do as you wish with location here
                 mLocation = location ;
 
-                 Float speed =  location.getSpeed();
+                 Float speed = location.getSpeed();
                  speed =  (float)Math.round(speed*100)/100 ;
                 speedtv.setText(speed+" m/s");
 
@@ -224,21 +224,25 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
     // Curve Prediction Model Function
     public HashMap<String , HashMap<String , String>> getnextlatlong( LatLng ln , Float speed , float Bearing )  {
 
-            HashMap< String , HashMap<String , String >> arll = new HashMap<>() ;
+        HashMap< String , HashMap<String , String >> arll = new HashMap<>() ;
+        speed = speed * 3.6f  ;
 
+        int Initial_time = getCurrentTime() ;
         for( int i=1 ; i<=100 ; i++)   {
 
-            double distance_travelled = speed * 0.15 *i ;
-            double bearing_angle = Math.toRadians(Bearing) ;
+            double R = 6378.1   ;
+            Log.i("Dspeed" , speed+"") ;
+
+            double distance_travelled = speed * 0.0000416667 *i ;
+            double bearing_angle = Bearing ;
             double lat1 = Math.toRadians(ln.latitude) ;
             double lon1 = Math.toRadians(ln.longitude) ;
 
-            double lat2 = Math.asin( Math.sin(lat1)*Math.cos(distance_travelled) + Math.cos(lat1)*Math.sin(distance_travelled)*Math.cos(bearing_angle) );
-            double a = Math.atan2(Math.sin(bearing_angle)*Math.sin(distance_travelled)*Math.cos(lat1), Math.cos(distance_travelled)-Math.sin(lat1)*Math.sin(lat2));
+            double lat2 = Math.asin( Math.sin(lat1)*Math.cos(distance_travelled/R) + Math.cos(lat1)*Math.sin(distance_travelled/R)*Math.cos(bearing_angle) );
+            double a = Math.atan2(Math.sin(bearing_angle)*Math.sin(distance_travelled/R)*Math.cos(lat1), Math.cos(distance_travelled/R)-Math.sin(lat1)*Math.sin(lat2));
             double lon2 = lon1 + a;
-            lon2 = (lon2+ 3*Math.PI) % (2*Math.PI) - Math.PI;
 
-            int time  = getCurrentTime()+ i*150 ;
+            int time  = Initial_time + i*150 ;
 
 
 

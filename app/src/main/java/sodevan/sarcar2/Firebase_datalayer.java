@@ -49,16 +49,19 @@ public class Firebase_datalayer {
                 List<sodevan.sarcar2.Models.StreetSegment> o1 = response.body().getStreetSegment() ;
                 Log.i("jjkk" , o1+"");
 
-                roads = new ArrayList<>() ;
-                for(sodevan.sarcar2.Models.StreetSegment c1  : o1 ) {
-                    roads.add(c1.getName()) ;
+                if(o1 !=null) {
+                    roads = new ArrayList<>();
+                    for (sodevan.sarcar2.Models.StreetSegment c1 : o1) {
+                        roads.add(c1.getName());
+
+                    }
+
+                    Gson gson = new Gson();
+                    String json = gson.toJson(roads);
+                    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(c1);
+                    sp.edit().putString("roads", json).commit();
 
                 }
-
-                Gson gson = new Gson();
-                String json = gson.toJson(roads);
-                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(c1) ;
-                sp.edit().putString("roads" , json).commit() ;
             }
 
             @Override
