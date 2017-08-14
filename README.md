@@ -1,48 +1,23 @@
 # SarCar
-An Android Application currently for Mobile Devices, but can further be scaled for Android Auto.
-* In this time where we are thinking of smart cities, Digital India, Startup India, we, Team Sodevan want to implement Smart Vehichles.
-* When humans can interact with each other, why not vehichles. We are making a system of Vehichular Interactions using (http://searchnetworking.techtarget.com/definition/cognitive-radio "Cognitive Radio")
-* Vehichles will be able to interact with each other, sharing their locations and speed and using our algorithm, we can predict whether two vehichles collide or not.
-* Our Smart Anti Collision System can help prevent accidents.
 
+SARCAR is a Collision Avoidance System which based on Cognitive Radio(smart broadcasting) and GPRS Technology.Cognitive radio allows a cellular network to dynamically lease the under-utilised frequency bands without causing harmful interference to the incumbents.
 
-Open Source repos used :
-1) Fused-location , License :
+Presently Collision Avoidance Systems are built on hardware and are very expensive and are only used in expensive cars.
 
-The MIT License (MIT)
+Smart Cities,Smart phones, Let's give it in for Smart Vehicles this time. Accidents happen at intersections, accidents happen due to over-speeding of vehicles,Ambulances get stuck in traffic jams,etc. Sarcar provides a medium for Vehicles to interact smartly. Vehicles connected by a link similar to cognitive link using 5G are able to share their location and speed parameters using the sensors inbuilt in the Android phone (or Android Auto). We have made(upgrading) a predictive algorithm to tell whether an accident will happen between two vehicles or not. Taking the parameters, in case of accidents our machine will learn under what circumstances of parameters do accidents happen and will get better every time to predict accidents. We will also analyse the data of streets and intersections where frequency of accidents is higher and the concerned authorities can take action to prevent this. In cases of accidents we have sufficient data to find out the cause of the accident which will also help in further investigation.
 
-Copyright (c) 2015 riteshreddyr
+Our prototype has an Android App which currently runs on Android phone but will in future run in Android for Cars. This application is the primary source of data collection for our algorithm.The Android App collects data and sends it to the firebase database where our algorithm coded in python predicts whether an accident is possible or not.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Sarcar is a startup which is working with Indian government agencies to study the scope of GPS for collision avoidance. We are actively researching on the use of Cognitive Radio and have implemented a cognitive radio like mechanism using GPS and 4G Technology. Other use cases of our app is to alert in case of emergency nearby so that all vehichles can give way to the emergency vehichle(eg Ambulance). It often is the case when Ambulances get stuck in traffic and many patients die due to this problem. Our governement recognizes this problem and has tried ways to solve this by Informing people about ambulances going by FM but this does not target specific people who actually will be affected by the ambulance but targets the complete city. Our Algorithm of finding nearby vehichles using haversine formula helps to solve this problem too.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+Auto Traffic Penalties / E-challan : We can easily get hold of of traffic defaulters who overspeed. We will be able to penalize drivers who overspeed without the need of traffic police. A driver will get notification warning 5 times before he is penalized.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Realtime Traffic-Police Supervision And specific Broadcast :
 
+It allows traffic police to interact with a particular section of vehicles.
 
-2)Retrofit- A type safe client HTTP client for android and java
-Copyright 2013 Square, Inc.
+Eg : In case of a broken bridge , Traffic police supervisor can directly alert a group of people travelling through that route to switch their route .
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+We have Graphically represented Accident data in the United Kingdoms as shown in the presentation using Accidents dataset of UK provided by Kaggle which clearly shows that UK needs something to prevent road accidents and i believe our solution can make wonders.
 
-   http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+We are predicting Accidents by Artificial Neural Network as shown in the Sarcar.ipynb file with all detail information.(https://github.com/PiyushGupta007/SarCar/blob/master/ML%20AND%20PYTHON/SarCar-Collision-Avoidance.ipynb)
