@@ -1,8 +1,8 @@
 # SarCar
 
-SARCAR is a Collision Avoidance System which based on Cognitive Radio(smart broadcasting) and GPRS Technology.Cognitive radio allows a cellular network to dynamically lease the under-utilised frequency bands without causing harmful interference to the incumbents.
+*SARCAR* is a Collision Avoidance System which based on Cognitive Radio(smart broadcasting) and GPRS Technology.Cognitive radio allows a cellular network to dynamically lease the under-utilised frequency bands without causing harmful interference to the incumbents.
 
-Presently Collision Avoidance Systems are built on hardware and are very expensive and are only used in expensive cars.
+Presently *Collision Avoidance Systems* are built on hardware and are very expensive and are only used in expensive cars.
 
 Smart Cities,Smart phones, Let's give it in for Smart Vehicles this time. Accidents happen at intersections, accidents happen due to over-speeding of vehicles,Ambulances get stuck in traffic jams,etc. Sarcar provides a medium for Vehicles to interact smartly. Vehicles connected by a link similar to cognitive link using 5G are able to share their location and speed parameters using the sensors inbuilt in the Android phone (or Android Auto). We have made(upgrading) a predictive algorithm to tell whether an accident will happen between two vehicles or not. Taking the parameters, in case of accidents our machine will learn under what circumstances of parameters do accidents happen and will get better every time to predict accidents. We will also analyse the data of streets and intersections where frequency of accidents is higher and the concerned authorities can take action to prevent this. In cases of accidents we have sufficient data to find out the cause of the accident which will also help in further investigation.
 
