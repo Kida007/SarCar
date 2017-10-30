@@ -16,7 +16,7 @@ Realtime Traffic-Police Supervision And specific Broadcast :
 
 It allows traffic police to interact with a particular section of vehicles.
 
-E.g. : In case of a broken bridge, rraffic police supervisor can directly alert a group of people travelling through that route to switch their route.
+E.g. : In case of a broken bridge, traffic police supervisor can directly alert a group of people travelling through that route to switch their route.
 
 We have graphically represented accident data in the United Kingdom as shown in the presentation using Accidents dataset of UK provided by Kaggle which clearly shows that UK needs something to prevent road accidents and I believe our solution can make wonders.
 
